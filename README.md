@@ -1,114 +1,135 @@
-# 📈 Growth360: Performance Multicanal e Jornada de Clientes
+# 💐 Floratta Digital – Análise de Growth e Jornada de Clientes
 
-Simulação de uma empresa digital com campanhas em diversos canais e funil de conversão integrado com vendas. O projeto abrange engenharia e análise de dados para monitoramento de performance, otimização de funis e suporte à estratégia de marketing e growth.
+Este projeto simula a **Floratta Digital**, uma empresa fictícia de cosméticos veganos e fragrâncias artesanais, inspirada em marcas como **Natura** e **O Boticário**. A Floratta opera 100% online e utiliza canais de marketing digital para atrair, converter e fidelizar clientes. O objetivo do projeto é analisar o desempenho das campanhas multicanal, o comportamento de usuários e a jornada de compra, com foco em estratégias de **growth marketing**.
 
 ---
 
 ## 🎯 Objetivo
 
-**Analisar a performance de canais digitais e a jornada de clientes para gerar insights de marketing e growth**, simulando um ambiente real de tomada de decisão com dados.
+Construir um projeto completo de engenharia e análise de dados que simula uma operação real de marketing digital e vendas diretas ao consumidor. O projeto é dividido em três fases:
+
+1. **Engenharia de dados:** geração, armazenamento, modelagem e cálculo de KPIs
+2. **Visualização estratégica:** construção de dashboards para os times de Marketing, Growth e Vendas
+3. **Análise avançada:** execução e análise de um teste A/B, com recomendações de otimização
 
 ---
 
-## 📊 Escopo Analítico
+## 🧪 Sobre a Floratta Digital
 
-| Eixo do Projeto                                                                                   | Simulação e Análise no Projeto                                                   |
-|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| Performance de canais (Google Ads, FB Ads, LinkedIn, SEO, Email)                                 | Campanhas multicanais com custo e resultados simulados                                       |
-| KPIs: ROI, ROAS, CAC, LTV                                                                         | Cálculo realista via dbt com métricas por canal e campanha                                   |
-| Funil de conversão e jornada do cliente                                                           | Eventos de interação + pipeline de vendas                                                    |
-| Coortes e personas                                                                                | Agrupamentos por comportamento e atributos demográficos                                       |
-| Comportamento em site e landing pages                                                             | Simulação de eventos web (visita, scroll, clique, etc.)                                      |
-| Testes A/B e modelos de atribuição                                                                | Grupos de teste e controle + atribuição linear/último clique                                 |
-| Relatórios estratégicos                                                                           | Dashboards + análise estratégica em notebook                                                 |
-| Integração marketing + vendas                                                                     | Conexão entre campanhas e conversões no pipeline comercial                                   |
+> A **Floratta Digital** é uma marca 100% online de cosméticos veganos e fragrâncias artesanais. Voltada para mulheres urbanas entre 25 e 45 anos, a empresa aposta em campanhas multicanal, personalização de ofertas e fidelização por meio de experiências sensoriais. Suas principais estratégias envolvem:
+
+- Campanhas em **Instagram Ads**, **Google Ads**, **YouTube Ads**, **Email Marketing** e **SEO**
+- Ofertas como “Kit de Amostra Grátis”, “Fragrância da Estação” e “Clube de Assinatura”
+- Conversão via landing pages segmentadas
 
 ---
 
-## 🧱 Arquitetura Técnica
+## 🧬 Jornada Simulada
 
-### Geração de Dados Sintéticos (com Python)
-
-| Tabela          | Descrição                                                                      |
-|-----------------|----------------------------------------------------------------------------------|
-| `users`         | Usuários com idade, sexo, localização, canal favorito, persona                  |
-| `personas`      | Tags simulando perfis comportamentais (ex: estudante, empreendedor)             |
-| `web_events`    | Interações em landing pages (visita, scroll, clique em CTA, bounce)             |
-| `campaigns`     | Campanhas por canal, com data, objetivo, segmento-alvo                          |
-| `ad_spend`      | Investimento por campanha, canal e dia                                          |
-| `conversions`   | Conversões com valor gerado e canal atribuído                                   |
-| `sales_pipeline`| Pipeline do lead (lead → MQL → SQL → venda)                                     |
-| `ab_tests`      | Grupo de experimento (teste x controle) com resultado                           |
+```text
+🟡 Visitante (Instagram/Google/SEO)
+→ 🟠 Interação com anúncio ou página
+→ 🔵 Cadastro como lead
+→ 🟣 Primeira compra
+→ 🟢 Retenção ou churn
+```
 
 ---
 
-### Armazenamento em Nuvem
+## 📊 Escopo do Projeto
 
-- Arquivos `.parquet` ou `.csv`
-- Bucket na nuvem: **AWS S3** ou **Google Cloud Storage**
-- Particionado por canal, data ou tipo de evento
+| Tema do Projeto                                                                                      | Implementação no Projeto                                                                     |
+|----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| Análise de canais (Google, Insta, Email, SEO)                                                     | Simulação de campanhas com dados sintéticos por canal e por segmento                         |
+| KPIs de marketing: ROI, ROAS, CAC, LTV                                                            | Cálculo via dbt usando eventos de conversão, custo e retenção                                |
+| Funil de conversão e jornada do cliente                                                           | Mapeamento da jornada desde o clique até a retenção, com timestamps                          |
+| Segmentação e coortes                                                                             | Agrupamento por idade, comportamento, persona e data de aquisição                            |
+| Comportamento em landing pages                                                                    | Simulação de interações com páginas (scroll, clique, bounce, tempo na página)                |
+| Teste A/B com CTA                                                                                 | Implementação de grupos teste e controle em landing pages, com análise posterior             |
+| Relatórios estratégicos                                                                           | Dashboards para Growth e apresentação de recomendações com base nos dados                    |
+| Integração marketing e vendas                                                                     | Conexão entre campanhas e conversões no funil de vendas (lead → venda)                       |
+
+---
+
+## 🛠️ Stack de Ferramentas
+
+| Etapa                    | Ferramentas utilizadas                                                  |
+|--------------------------|------------------------------------------------------------------------|
+| Geração de dados         | Python, Pandas, Faker                                                  |
+| Armazenamento            | AWS S3 ou Google Cloud Storage (parquet/csv)                          |
+| Transformação e modelagem| dbt (com DuckDB ou BigQuery)                                           |
+| Dashboard                | Looker Studio ou Power BI                                              |
+| Orquestração             | Apache Airflow (local)                                                 |
+| Análise final            | Jupyter Notebook ou Google Slides                                      |
+| Documentação             | GitHub + dbt docs + README completo                                    |
+
+---
+
+## 📂 Estrutura de Dados Sintéticos
+
+| Tabela                  | Descrição                                                                 |
+|-------------------------|---------------------------------------------------------------------------|
+| `users`                | Usuárias simuladas com idade, cidade, canal favorito, persona             |
+| `campaigns`            | Campanhas com canal, produto, criativo, datas                             |
+| `web_events`           | Eventos em landing pages (scroll, clique, bounce, tempo na página)        |
+| `ad_spend`             | Investimentos diários por campanha e canal                                |
+| `leads`                | Leads gerados a partir das campanhas, com origem e tags                   |
+| `sales_pipeline`       | Pipeline de vendas (lead → MQL → SQL → venda)                             |
+| `conversions`          | Compras feitas, com valor e canal atribuído                               |
+| `ab_tests`             | Grupos teste e controle em campanhas de landing page                      |
 
 ---
 
 ## 🧠 Transformações com dbt
 
-**Camadas dbt:**
+### Camadas:
 
-- `stg_`: Limpeza e padronização dos dados brutos
-- `int_`: Métricas intermediárias (ex: tempo na jornada, tags de comportamento)
-- `fct_`: Métricas agregadas de performance (campanha, canal, usuário)
-- `dim_`: Dimensões auxiliares (canais, personas, tempo, funil)
+- `stg_`: Padronização e limpeza dos dados brutos
+- `int_`: Cálculos intermediários (ex: tempo até conversão, custo por lead)
+- `fct_`: Fatos agregados com métricas de desempenho
+- `dim_`: Tabelas de dimensão como canal, tempo, persona
 
-**Principais KPIs calculados:**
+### KPIs implementados:
 
-| Métrica         | Fórmula Simplificada                                |
+| Métrica         | Fórmula simplificada                                 |
 |-----------------|------------------------------------------------------|
 | ROI             | (Receita - Custo) / Custo                            |
-| ROAS            | Receita / Custo de anúncios                          |
+| ROAS            | Receita / Custo de anúncio                           |
 | CAC             | Custo / Nº de clientes adquiridos                    |
 | LTV             | Receita média por usuário * tempo médio de retenção  |
 | Taxa conversão  | Nº conversões / Nº visitantes                        |
 
 ---
 
-## 📊 Dashboard
+## 📊 Dashboards
 
-Ferramentas possíveis: **Metabase**, **Looker Studio** ou **Apache Superset**
+Criados com Looker Studio ou Power BI, com visualizações como:
 
-### Principais Visualizações:
-
-- Visão geral da performance por canal
-- Análise de cohort de usuários (data de aquisição vs retenção/conversão)
-- Funil de conversão visual
-- Resultados de testes A/B
-- Comportamento em landing pages
-- Custo e retorno por campanha
+- Performance por canal e campanha
+- Comparativo de CAC, ROAS, LTV
+- Cohorts por data de aquisição
+- Funil de conversão
+- Resultado do teste A/B
+- Comportamento de visitantes em páginas
 
 ---
 
-## 📈 Análise Estratégica
+## 📈 Análise Avançada
 
-Feita em **Jupyter Notebook** ou apresentação com storytelling. Inclui:
+### 🔬 Teste A/B: CTA na Landing Page
 
-- Canais com maior ROI/ROAS
-- Perfis de usuários com maior LTV
-- Gargalos no funil de conversão
-- Segmentos com maior engajamento por tipo de campanha
-- Recomendações de otimização para os times de marketing e vendas
+- **Hipótese:** O CTA “Descubra sua fragrância ideal” gera mais conversão do que “Peça já sua amostra grátis”
+- **Execução:** Grupos de teste e controle aplicados aos visitantes da landing page
+- **Métrica avaliada:** Taxa de conversão visita → lead
+- **Resultado:** _[será analisado e apresentado após simulação]_
 
 ---
 
-## 🛠️ Stack de Ferramentas
+### 📌 Recomendações Estratégicas (exemplo)
 
-| Camada              | Ferramentas                                                                         |
-|---------------------|--------------------------------------------------------------------------------------|
-| Geração de dados    | Python, Pandas, Faker                                                               |
-| Armazenamento       | AWS S3 ou GCP Storage                                                               |
-| Transformação       | dbt (local ou dbt Cloud, com DuckDB ou BigQuery)                                   |
-| Orquestração (extra)| Airflow (opcional)                                                                  |
-| Dashboard           | Metabase, Superset ou Looker Studio                                                 |
-| Análise final       | Jupyter, Google Slides ou PowerPoint                                                |
-| Documentação        | GitHub + dbt docs + README completo                                                 |
+- Redirecionar investimento do canal YouTube para Google Ads, que tem ROAS 3x superior
+- Focar campanhas de email marketing no público "executiva urbana", com maior LTV
+- Adotar CTA mais emocional nas landing pages baseado no resultado do teste A/B
 
 ---
 
@@ -124,15 +145,13 @@ Feita em **Jupyter Notebook** ou apresentação com storytelling. Inclui:
 | Modelagem `int_` e `fct_`    | ☐           |
 | Cálculo dos KPIs             | ☐           |
 | Conexão com dashboard        | ☐           |
+| Execução do teste A/B        | ☐           |
 | Análise estratégica final    | ☐           |
-| Documentação e README        | ☐           |
+| Documentação e README        | ✅           |
 
 ---
 
-## 🌟 Extensões Futuras
+## 👩‍💻 Sobre o Projeto
 
-- Deploy do dashboard interativo (ex: Streamlit)
-- Orquestração com Airflow
-- Feature store de usuários segmentados
-- Criação de alertas automáticos para métricas fora da média
+Este projeto foi desenvolvido por [Natália Guarnieri]([https://www.linkedin.com/in/nataliaguarnieri/]) como parte do seu portfólio em dados, com foco em engenharia, análise de marketing e estratégias de crescimento baseadas em dados.
 
